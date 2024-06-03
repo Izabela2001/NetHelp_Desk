@@ -60,3 +60,9 @@ CREATE TABLE tbl_User(
 	CONSTRAINT FK_DepartamentUser FOREIGN KEY (IdDepartament) REFERENCES tbl_Departament(IdDepartament),
 	CONSTRAINT FK_Position FOREIGN KEY (IdPosition) REFERENCES tbl_Positon(IdPosition),
 	CONSTRAINT FK_Education FOREIGN KEY (IdEducation) REFERENCES tbl_Education(IdEducation));
+CREATE TABLE tbl_Records(
+	IdRecords INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	IdReport INT NOT NULL,
+	Coverage VARCHAR(300) NULL,
+	DataRecords DATA NOT NULL,
+	CONSTRAINT FK_Report FOREIGN KEY (IdReport) REFERENCES tbl_Report(IdReport));
