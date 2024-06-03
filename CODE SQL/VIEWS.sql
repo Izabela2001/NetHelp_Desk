@@ -27,3 +27,24 @@ CREATE OR ALTER VIEW VW_RaportInfo AS
 	INNER JOIN tbl_ReportStatus AS RS ON R.IdReportStatus=RS.IdReportStatus
 	INNER JOIN tbl_Account AS A ON R.IdAccount =A.IdAccount
 	LEFT JOIN tbl_User AS U ON A.IdAccount=U.IdAccount;
+GO
+CREATE OR ALTER VIEW VW_RecordsInfo AS 
+	SELECT 
+		R.IdReport, 
+		R.Content, 
+		R.DateReport, 
+		TD.NameType AS 'TypeDepartament',
+		RS.NameStatus, 
+		U.FristName, 
+		U.NumerPhone, 
+		D.NumerBuldings, 
+		Re.DataRecords, 
+		Re.Coverage
+	FROM tbl_Records AS Re
+	INNER JOIN tbl_Report AS R ON Re.IdReport = R.IdReport
+	INNER JOIN tbl_Departament AS D ON R.IdDepartament = D.IdDepartament
+	LEFT JOIN tbl_TypeDepartament AS TD ON D.IdTypeDepartament = TD.IdTypeDepartament
+	INNER JOIN tbl_ReportStatus AS RS ON R.IdReportStatus = RS.IdReportStatus
+	INNER JOIN tbl_Account AS A ON R.IdAccount = A.IdAccount
+	LEFT JOIN tbl_User AS U ON A.IdAccount = U.IdAccount;
+
